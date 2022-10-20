@@ -92,9 +92,9 @@ const App = () => {
     //     </View>
     //   </ScrollView>
     // </SafeAreaView>
-    <Login />
+    // <Login />
     // <Register />
-    // <MainNavigation/>
+    <MainNavigation />
   );
 };
 

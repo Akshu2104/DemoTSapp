@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {
   Alert,
-  Button,
   ImageBackground,
   Platform,
   StyleSheet,
@@ -16,13 +15,13 @@ const image = {
   backGround: require('../../assets/images/temp1.jpeg'),
 };
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [text, onChangeText] = useState('');
   const [pass, onChangePass] = useState('');
 
   const logIn = () => {
-    if (text != '') {
-      if (pass != '') {
+    if (text !== '') {
+      if (pass !== '') {
         Alert.alert('Hello');
       } else {
         Alert.alert('Please provide password');
@@ -58,16 +57,16 @@ const Login = () => {
                 secureTextEntry={true}
                 placeholder="Password"
               />
-              <View style={styles.button}>
-                <Button title="LogIn" color="black" onPress={() => logIn()} />
-              </View>
+              <TouchableOpacity style={styles.button} onPress={() => logIn()}>
+                <Text style={styles.action}>LogIn</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </KeyboardAvoidingView>
         <View style={styles.footer}>
           <Text style={styles.account}>
             Don't have account?
-            <TouchableOpacity onPress={() => Alert.alert('For Register')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
               <Text style={styles.reg}> Register</Text>
             </TouchableOpacity>
           </Text>
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   main: {
-    marginHorizontal: 15,
+    marginHorizontal: 18,
     paddingTop: 15,
     marginBottom: 20,
     marginVertical: 15,
@@ -95,6 +94,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 10,
     fontWeight: 'bold',
+    color: 'black',
   },
   text: {
     fontFamily: 'arial',
@@ -119,11 +119,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: 20,
     backgroundColor: 'pink',
+    padding: 13,
+  },
+  action: {
+    fontWeight: 'bold',
+    color: 'black',
+    textAlign: 'center',
   },
   reg: {
     color: 'white',
     fontWeight: 'bold',
-    paddingLeft:5,
+    paddingLeft: 5,
   },
   account: {
     fontSize: 15,

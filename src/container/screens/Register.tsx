@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {
   Alert,
-  Button,
   ImageBackground,
   Platform,
   StyleSheet,
@@ -16,17 +15,17 @@ const image = {
   backGround: require('../../assets/images/temp1.jpeg'),
 };
 
-const Register = () => {
+const Register = ({navigation}) => {
   const [name, onChangeName] = useState('');
   const [last, onChangeLast] = useState('');
   const [email, onChangeEmail] = useState('');
   const [pass, onChangePass] = useState('');
 
   const onRegister = () => {
-    if (name != '') {
-      if (last != '') {
-        if (email != '') {
-          if (pass != '') {
+    if (name !== '') {
+      if (last !== '') {
+        if (email !== '') {
+          if (pass !== '') {
             Alert.alert('Hello');
           } else {
             Alert.alert('Please provide password');
@@ -82,20 +81,18 @@ const Register = () => {
                 secureTextEntry={true}
                 placeholder="Password"
               />
-              <View style={styles.button}>
-                <Button
-                  title="Register"
-                  color="black"
-                  onPress={() => onRegister()}
-                />
-              </View>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => onRegister()}>
+                <Text style={styles.action}>Register</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </KeyboardAvoidingView>
         <View style={styles.footer}>
           <Text style={styles.account}>
             Already have account?
-            <TouchableOpacity onPress={() => Alert.alert('For Login')}>
+            <TouchableOpacity onPress={() => navigation.navigate('LogIn')}>
               <Text style={styles.reg}> Login</Text>
             </TouchableOpacity>
           </Text>
@@ -113,7 +110,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
     paddingTop: 15,
     marginBottom: 20,
-    marginVertical: 20,
+    marginVertical: 25,
   },
   image: {
     flex: 1,
@@ -123,6 +120,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 10,
     fontWeight: 'bold',
+    color: 'black',
   },
   text: {
     fontFamily: 'arial',
@@ -147,11 +145,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: 20,
     backgroundColor: 'pink',
+    padding: 13,
+  },
+  action: {
+    fontWeight: 'bold',
+    color: 'black',
+    textAlign: 'center',
   },
   reg: {
     color: 'white',
     fontWeight: 'bold',
-    paddingLeft:5,
+    paddingLeft: 5,
   },
   account: {
     fontSize: 15,
