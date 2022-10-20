@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "663129378071",
+    "project_id": "demots-e0138",
+    "storage_bucket": "demots-e0138.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663129378071:android:7dd0d367ef4f5aa1a67b52",
+        "android_client_info": {
+          "package_name": "com.demots"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663129378071-4i4m46eig35oln19nk464cf9jkkb38n1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.demots",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "663129378071-a2a4cdrgq5u57p1592ieum863vd4t4s6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9I6h3VUPpvULQhbXLTp8BkNl1MDkeiBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663129378071-a2a4cdrgq5u57p1592ieum863vd4t4s6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
