@@ -10,6 +10,7 @@
 
 import React, {type PropsWithChildren} from 'react';
 import MainNavigation from './src/container/navigators/MainNavigation';
+import Data from './src/container/screens/Data';
 // import {
 //   SafeAreaView,
 //   ScrollView,
@@ -94,6 +95,7 @@ const App = () => {
     // </SafeAreaView>
     // <Login />
     // <Register />
+    // <Data/>
     <MainNavigation />
   );
 };

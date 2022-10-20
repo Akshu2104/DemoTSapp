@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
 import {
   Alert,
   ImageBackground,
@@ -15,14 +16,19 @@ const image = {
   backGround: require('../../assets/images/temp1.jpeg'),
 };
 
-const Login = ({navigation}) => {
+const Login: React.FC<Props> = () => {
+  const navigation = useNavigation();
   const [text, onChangeText] = useState('');
   const [pass, onChangePass] = useState('');
 
+  // useEffect(() => {
+  //   onChangeText('');
+  //   onChangePass('');
+  // }, []);
   const logIn = () => {
     if (text !== '') {
       if (pass !== '') {
-        Alert.alert('Hello');
+        navigation.navigate('Data');
       } else {
         Alert.alert('Please provide password');
       }

@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {
   Alert,
@@ -15,7 +16,8 @@ const image = {
   backGround: require('../../assets/images/temp1.jpeg'),
 };
 
-const Register = ({navigation}) => {
+const Register: React.FC<Props> = () => {
+  const navigation = useNavigation();
   const [name, onChangeName] = useState('');
   const [last, onChangeLast] = useState('');
   const [email, onChangeEmail] = useState('');
@@ -27,6 +29,7 @@ const Register = ({navigation}) => {
         if (email !== '') {
           if (pass !== '') {
             Alert.alert('Hello');
+            navigation.navigate('LogIn');
           } else {
             Alert.alert('Please provide password');
           }
