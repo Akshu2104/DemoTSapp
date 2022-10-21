@@ -9,7 +9,7 @@ import Detail from '../screens/Detail';
 import {Button} from 'react-native';
 
 const Stack = createNativeStackNavigator();
-// const MainNavigation: React.FC<Props> = () => {
+// main navigation of the app when login or logout
 function MainNavigation() {
   const [initializing, setInitializing] = useState<boolean>(true);
   const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
@@ -27,6 +27,7 @@ function MainNavigation() {
     }
   }, []);
 
+  //function for signing out from account
   const logOut = () => {
     try {
       auth()

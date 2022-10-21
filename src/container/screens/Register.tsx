@@ -24,6 +24,7 @@ const Register: React.FC<Props> = () => {
   const [email, onChangeEmail] = useState('');
   const [pass, onChangePass] = useState('');
 
+  //function for registering new user
   const onRegister = () => {
     try {
       if (name !== '') {
@@ -37,21 +38,21 @@ const Register: React.FC<Props> = () => {
                 })
                 .catch(error => {
                   if (error.code === 'auth/email-already-in-use') {
-                    Alert.alert('That email address is already in use!');
+                    Alert.alert('Email address is already in use!');
                   }
                   if (error.code === 'auth/invalid-email') {
-                    Alert.alert('That email address is invalid!');
+                    Alert.alert('Email address is invalid!');
                   }
                   Alert.alert(`${error}`);
                 });
             } else {
-              Alert.alert('Please provide password');
+              Alert.alert('Password is mandatory');
             }
           } else {
-            Alert.alert('Please provide email');
+            Alert.alert('Email is mandatory');
           }
         } else {
-          Alert.alert('Please provide last name');
+          Alert.alert('Last name is mandatory');
         }
       } else {
         Alert.alert('All fields are required');

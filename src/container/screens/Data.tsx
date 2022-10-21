@@ -21,6 +21,7 @@ const Data: React.FC<Props> = () => {
     dummyData();
   }, []);
 
+  //function for component of data card rendering in flatlist
   const renderComponent = ({item}) => {
     return (
       <TouchableOpacity
@@ -37,6 +38,7 @@ const Data: React.FC<Props> = () => {
     );
   };
 
+  //function for getting dummy data from the link
   const dummyData = async () => {
     try {
       fetch('https://jsonplaceholder.typicode.com/posts')

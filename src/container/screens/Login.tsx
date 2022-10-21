@@ -22,6 +22,7 @@ const Login: React.FC<Props> = () => {
   const [text, onChangeText] = useState('');
   const [pass, onChangePass] = useState('');
 
+  //function for onPress login button
   const logIn = () => {
     try {
       if (text !== '') {
@@ -29,11 +30,11 @@ const Login: React.FC<Props> = () => {
           auth()
             .signInWithEmailAndPassword(text, pass)
             .then(() => {
-              Alert.alert('User account signed in!');
+              Alert.alert('Account signed in!');
             })
             .catch(error => {
               if (error.code === 'auth/invalid-email') {
-                Alert.alert('That email address is invalid!');
+                Alert.alert('Email address is invalid!');
               }
               Alert.alert(`${error}`);
             });
