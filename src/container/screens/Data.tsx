@@ -38,9 +38,13 @@ const Data: React.FC<Props> = () => {
   };
 
   const dummyData = async () => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(json => setData(json));
+    try {
+      fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(response => response.json())
+        .then(json => setData(json));
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (

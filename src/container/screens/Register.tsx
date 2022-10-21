@@ -25,38 +25,39 @@ const Register: React.FC<Props> = () => {
   const [pass, onChangePass] = useState('');
 
   const onRegister = () => {
-    if (name !== '') {
-      if (last !== '') {
-        if (email !== '') {
-          if (pass !== '') {
-            // auth()
-            //   .createUserWithEmailAndPassword(name, last)
-            //   .then(() => {
-            //     console.log('User account created & signed in!');
-            //   })
-            //   .catch(error => {
-            //     if (error.code === 'auth/email-already-in-use') {
-            //       console.log('That email address is already in use!');
-            //     }
-
-            //     if (error.code === 'auth/invalid-email') {
-            //       console.log('That email address is invalid!');
-            //     }
-
-            //     console.error(error);
-            //   });
-            navigation.navigate('LogIn');
+    try {
+      if (name !== '') {
+        if (last !== '') {
+          if (email !== '') {
+            if (pass !== '') {
+              auth()
+                .createUserWithEmailAndPassword(email, pass)
+                .then(() => {
+                  Alert.alert('User account created & signed in!');
+                })
+                .catch(error => {
+                  if (error.code === 'auth/email-already-in-use') {
+                    Alert.alert('That email address is already in use!');
+                  }
+                  if (error.code === 'auth/invalid-email') {
+                    Alert.alert('That email address is invalid!');
+                  }
+                  Alert.alert(`${error}`);
+                });
+            } else {
+              Alert.alert('Please provide password');
+            }
           } else {
-            Alert.alert('Please provide password');
+            Alert.alert('Please provide email');
           }
         } else {
-          Alert.alert('Please provide email');
+          Alert.alert('Please provide last name');
         }
       } else {
-        Alert.alert('Please provide last name');
+        Alert.alert('All fields are required');
       }
-    } else {
-      Alert.alert('All fields are required');
+    } catch (e) {
+      console.error(e);
     }
   };
 

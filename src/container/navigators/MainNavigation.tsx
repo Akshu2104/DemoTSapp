@@ -15,18 +15,26 @@ function MainNavigation() {
   const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
 
   useEffect(() => {
-    auth().onAuthStateChanged(userState => {
-      setUser(userState);
-      if (initializing) {
-        setInitializing(false);
-      }
-    });
+    try {
+      auth().onAuthStateChanged(userState => {
+        setUser(userState);
+        if (initializing) {
+          setInitializing(false);
+        }
+      });
+    } catch (e) {
+      console.error(e);
+    }
   }, []);
 
   const logOut = () => {
-    auth()
-      .signOut()
-      .then(() => console.log('User signed out!'));
+    try {
+      auth()
+        .signOut()
+        .then(() => console.log('User signed out!'));
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   if (initializing) {
