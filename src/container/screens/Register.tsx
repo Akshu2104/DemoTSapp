@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
+import auth from '@react-native-firebase/auth';
 import {
   Alert,
   ImageBackground,
@@ -28,7 +29,22 @@ const Register: React.FC<Props> = () => {
       if (last !== '') {
         if (email !== '') {
           if (pass !== '') {
-            Alert.alert('Hello');
+            // auth()
+            //   .createUserWithEmailAndPassword(name, last)
+            //   .then(() => {
+            //     console.log('User account created & signed in!');
+            //   })
+            //   .catch(error => {
+            //     if (error.code === 'auth/email-already-in-use') {
+            //       console.log('That email address is already in use!');
+            //     }
+
+            //     if (error.code === 'auth/invalid-email') {
+            //       console.log('That email address is invalid!');
+            //     }
+
+            //     console.error(error);
+            //   });
             navigation.navigate('LogIn');
           } else {
             Alert.alert('Please provide password');

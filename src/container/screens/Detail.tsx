@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 
@@ -7,9 +6,7 @@ const image = {
 };
 
 const Detail: React.FC<Props> = ({route}) => {
-  const navigation = useNavigation();
   const {data} = route.params;
-  //id, body, title, userId
   return (
     <View style={styles.container}>
       <ImageBackground

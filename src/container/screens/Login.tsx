@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import auth from '@react-native-firebase/auth';
 import {
   Alert,
   ImageBackground,
@@ -21,14 +22,23 @@ const Login: React.FC<Props> = () => {
   const [text, onChangeText] = useState('');
   const [pass, onChangePass] = useState('');
 
-  // useEffect(() => {
-  //   onChangeText('');
-  //   onChangePass('');
-  // }, []);
   const logIn = () => {
     if (text !== '') {
       if (pass !== '') {
-        navigation.navigate('Data');
+        auth()
+          .signInWithEmailAndPassword(text, pass)
+          .then(() => {
+            Alert.alert('User account signed in!');
+          })
+          .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+              Alert.alert('That email address is already in use!');
+            }
+            if (error.code === 'auth/invalid-email') {
+              Alert.alert('That email address is invalid!');
+            }
+            console.error(error);
+          });
       } else {
         Alert.alert('Please provide password');
       }
