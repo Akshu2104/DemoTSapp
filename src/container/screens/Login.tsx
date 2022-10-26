@@ -12,6 +12,7 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
 } from 'react-native';
+import Toast from 'react-native-simple-toast';
 
 const image = {
   backGround: require('../../assets/images/temp1.jpeg'),
@@ -30,7 +31,7 @@ const Login: React.FC<Props> = () => {
           auth()
             .signInWithEmailAndPassword(text, pass)
             .then(() => {
-              Alert.alert('Account signed in!');
+              Toast.show('Account signed in!');
             })
             .catch(error => {
               if (error.code === 'auth/invalid-email') {
@@ -42,7 +43,11 @@ const Login: React.FC<Props> = () => {
           Alert.alert('Please provide password');
         }
       } else {
-        Alert.alert('Email & password required');
+        Toast.showWithGravity(
+          'Email & password required',
+          Toast.LONG,
+          Toast.TOP,
+        );
       }
     } catch (e) {
       console.error(e);

@@ -7,6 +7,7 @@ import Register from '../screens/Register';
 import Data from '../screens/Data';
 import Detail from '../screens/Detail';
 import {Button} from 'react-native';
+import Toast from 'react-native-simple-toast';
 
 const Stack = createNativeStackNavigator();
 // main navigation of the app when login or logout
@@ -32,7 +33,7 @@ function MainNavigation() {
     try {
       auth()
         .signOut()
-        .then(() => console.log('User signed out!'));
+        .then(() => Toast.show('Signed out!'));
     } catch (e) {
       console.error(e);
     }

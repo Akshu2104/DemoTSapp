@@ -12,6 +12,7 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
 } from 'react-native';
+import Toast from 'react-native-simple-toast';
 
 const image = {
   backGround: require('../../assets/images/temp1.jpeg'),
@@ -34,7 +35,12 @@ const Register: React.FC<Props> = () => {
               auth()
                 .createUserWithEmailAndPassword(email, pass)
                 .then(() => {
-                  Alert.alert('User account created & signed in!');
+                  auth().signOut();
+                  Toast.showWithGravity(
+                    'Account created! Please Login',
+                    Toast.SHORT,
+                    Toast.TOP,
+                  );
                 })
                 .catch(error => {
                   if (error.code === 'auth/email-already-in-use') {
@@ -55,7 +61,7 @@ const Register: React.FC<Props> = () => {
           Alert.alert('Last name is mandatory');
         }
       } else {
-        Alert.alert('All fields are required');
+        Toast.showWithGravity('All fields are required', Toast.LONG, Toast.TOP);
       }
     } catch (e) {
       console.error(e);
